@@ -3,7 +3,7 @@ import { GitConfig } from 'src/git/Config';
 import { JiraConfig } from 'src/issue-tracker/jira/Config';
 import { JiraIssue } from 'src/issue-tracker/jira/types';
 import { HttpResponse } from 'src/network/HttpClient';
-import { Issue, IssueType, User } from 'src/types';
+import { Issue, IssueType, Release, ReleaseConfig, User } from 'src/types';
 
 /**
  * Data factory used to generate mock data for the tests
@@ -34,10 +34,10 @@ export const data = {
       url: faker.internet.url(),
     };
   },
-  createIssue(): Issue {
+  createIssue(type?: IssueType): Issue {
     const summary = faker.name.jobDescriptor();
     const sanitizedSummary = faker.helpers.slugify(summary);
-    const issueType = faker.random.arrayElement(Object.values(IssueType));
+    const issueType = type || faker.random.arrayElement(Object.values(IssueType));
     return {
       description: faker.lorem.paragraph(),
       id: faker.random.number(5000),
@@ -81,4 +81,17 @@ export const data = {
       response: {},
     };
   },
+  createRelease(): Release {
+    return {
+      id: faker.lorem.word(),
+      issues: [data.createIssue(IssueType.BUG), data.createIssue(IssueType.FEATURE)],
+      name: faker.lorem.word(),
+      url: faker.internet.url(),
+    };
+  },
+  createReleaseConfig(): ReleaseConfig {
+    return {
+      template: `{version}\n\n{fixedIssuesByCategory}\n\nSee [Jira release]({jira.release})\n\n{fotingo.banner}`,
+    };
+  }
 };
