@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getReleaseNotes getReleaseNotes allows user to edit the release notes 1`] = `
+Object {
+  "body": "
+# Bug fixes:
+
+* [#FOTINGO-2484](https://clark.net): Chief
+# Features:
+
+* [#FOTINGO-3908](http://stacey.org): Forward
+
+See [Jira release](http://myrtie.biz)
+
+🚀 Release created with [fotingo](https://github.com/tagoro9/fotingo) - edited",
+  "title": "ipsa",
+}
+`;
+
+exports[`getReleaseNotes getReleaseNotes uses the initial notes if useDefaults is set 1`] = `
+Object {
+  "body": "
+# Bug fixes:
+
+* [#FOTINGO-2484](https://clark.net): Chief
+# Features:
+
+* [#FOTINGO-3908](http://stacey.org): Forward
+
+See [Jira release](http://myrtie.biz)
+
+🚀 Release created with [fotingo](https://github.com/tagoro9/fotingo)",
+  "title": "ipsa",
+}
+`;
