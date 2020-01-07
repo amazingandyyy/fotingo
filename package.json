@@ -113,7 +113,8 @@
     "serialize-error": "^5.0.0",
     "standard-version": "^7.0.0",
     "ts-jest": "^24.2.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "waait": "^1.0.5"
   },
   "engines": {
     "node": ">=6.3.1",
