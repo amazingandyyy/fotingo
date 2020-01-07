@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`input maybeAskUserToSelectMatches asks the user to select an option otherwise 1`] = `
+Object {
+  "detail": undefined,
+  "message": "What do you pick for option1?",
+  "options": Array [
+    Object {
+      "label": "label 1",
+      "value": "value 1",
+    },
+    Object {
+      "label": "label 2",
+      "value": "value 2",
+    },
+  ],
+  "requestType": "select",
+  "showSpinner": false,
+  "type": "request",
+}
+`;
+
+exports[`input maybeAskUserToSelectMatches asks the user to select an option otherwise 2`] = `
+Object {
+  "detail": undefined,
+  "message": "What do you pick for option2?",
+  "options": Array [
+    Object {
+      "label": "label 1",
+      "value": "value 1",
+    },
+    Object {
+      "label": "label 2",
+      "value": "value 2",
+    },
+  ],
+  "requestType": "select",
+  "showSpinner": false,
+  "type": "request",
+}
+`;
+
+exports[`input maybeAskUserToSelectMatches asks the user to select an option otherwise 3`] = `
+Array [
+  Object {
+    "label": "label 1",
+    "value": "value 1",
+  },
+  Object {
+    "label": "label 2",
+    "value": "value 2",
+  },
+]
+`;
