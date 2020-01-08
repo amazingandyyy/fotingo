@@ -10,44 +10,69 @@ import { data } from 'test/lib/data';
 const simpleGit = (simpleGitMock as unknown) as jest.Mock;
 
 let git: Git;
-const issue = data.createIssue();
-const gitConfig = data.createGitConfig();
-const branchName = issue.key;
-const latestCommitHash = '547433c';
-const remoteBranch = `remotes/${gitConfig.remote}/${gitConfig.baseBranch}`;
-const remote = 'git@github.com:tagoro9/fotingo-rewrite.git';
-
-const gitMocks = {
-  branch: jest.fn().mockResolvedValue({ all: ['remotes/origin/master'] }),
-  branchLocal: jest.fn().mockResolvedValue({ all: [] }),
-  checkoutBranch: jest.fn().mockResolvedValue(undefined),
-  fetch: jest.fn().mockResolvedValue(undefined),
-  getRemotes: jest.fn().mockResolvedValue([
-    {
-      name: 'origin',
-      refs: {
-        fetch: remote,
-        push: remote,
-      },
-    },
-  ]),
-  log: jest.fn().mockResolvedValue({
-    latest: {
-      hash: latestCommitHash,
-    },
-  }),
-  push: jest.fn().mockResolvedValue(undefined),
-  revparse: jest.fn().mockResolvedValue(branchName),
-  stash: jest.fn().mockResolvedValue(undefined),
-  status: jest.fn().mockResolvedValue({
-    files: [],
-  }),
-};
 
 describe('Git', () => {
+  const mockGit = () => {
+    const issue = data.createIssue();
+    const gitConfig = data.createGitConfig();
+    const branchName = issue.key;
+    const latestCommitHash = '547433c';
+    const remoteBranch = `remotes/${gitConfig.remote}/${gitConfig.baseBranch}`;
+    const remote = 'git@github.com:tagoro9/fotingo.git';
+    return {
+      branchName,
+      gitConfig,
+      gitMocks: {
+        branch: jest
+          .fn()
+          .mockResolvedValue({
+            all: [
+              `remotes/${gitConfig.remote}/${branchName}`,
+              `remotes/${gitConfig.remote}/${gitConfig.baseBranch}`,
+            ],
+          }),
+        branchLocal: jest.fn().mockResolvedValue({ all: [] }),
+        checkoutBranch: jest.fn().mockResolvedValue(undefined),
+        fetch: jest.fn().mockResolvedValue(undefined),
+        getRemotes: jest.fn().mockResolvedValue([
+          {
+            name: 'origin',
+            refs: {
+              fetch: remote,
+              push: remote,
+            },
+          },
+        ]),
+        log: jest.fn().mockResolvedValue({
+          latest: {
+            hash: latestCommitHash,
+          },
+        }),
+        push: jest.fn().mockResolvedValue(undefined),
+        revparse: jest.fn().mockResolvedValue(branchName),
+        stash: jest.fn().mockResolvedValue(undefined),
+        status: jest.fn().mockResolvedValue({
+          files: [],
+        }),
+      },
+      latestCommitHash,
+      remoteBranch,
+    };
+  };
+
+  let gitMocks: ReturnType<typeof mockGit>['gitMocks'];
+  let remoteBranch: string;
+  let branchName: string;
+  let latestCommitHash: string;
+
   beforeEach(() => {
+    const mock = mockGit();
+    gitMocks = mock.gitMocks;
+    remoteBranch = mock.remoteBranch;
+    branchName = mock.branchName;
+    latestCommitHash = mock.latestCommitHash;
     simpleGit.mockReturnValue({ silent: () => gitMocks });
-    git = new Git(gitConfig, new Messenger());
+    git = new Git(mock.gitConfig, new Messenger());
   });
 
   afterEach(() => {

@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Git getBranchNameForIssue should generate a branch name for an issue 1`] = `"http://kacie.name fotingo-2484"`;
+exports[`Git getBranchNameForIssue should generate a branch name for an issue 1`] = `"http://trudie.name fotingo-3908"`;
 
 exports[`Git getRemote should fall back to the first remote if it cannot find the specified one 1`] = `
 Object {
   "commit": undefined,
   "filepath": "",
   "filepathtype": "",
-  "full_name": "tagoro9/fotingo-rewrite",
+  "full_name": "tagoro9/fotingo",
   "git_suffix": true,
   "hash": "",
-  "href": "git@github.com:tagoro9/fotingo-rewrite.git",
-  "name": "fotingo-rewrite",
+  "href": "git@github.com:tagoro9/fotingo.git",
+  "name": "fotingo",
   "organization": "tagoro9",
   "owner": "tagoro9",
-  "pathname": "/tagoro9/fotingo-rewrite.git",
+  "pathname": "/tagoro9/fotingo.git",
   "port": null,
   "protocol": "ssh",
   "protocols": Array [],
@@ -34,14 +34,14 @@ Object {
   "commit": undefined,
   "filepath": "",
   "filepathtype": "",
-  "full_name": "tagoro9/fotingo-rewrite",
+  "full_name": "tagoro9/fotingo",
   "git_suffix": true,
   "hash": "",
-  "href": "git@github.com:tagoro9/fotingo-rewrite.git",
-  "name": "fotingo-rewrite",
+  "href": "git@github.com:tagoro9/fotingo.git",
+  "name": "fotingo",
   "organization": "tagoro9",
   "owner": "tagoro9",
-  "pathname": "/tagoro9/fotingo-rewrite.git",
+  "pathname": "/tagoro9/fotingo.git",
   "port": null,
   "protocol": "ssh",
   "protocols": Array [],
