@@ -93,5 +93,5 @@ export const data = {
     return {
       template: `{version}\n\n{fixedIssuesByCategory}\n\nSee [Jira release]({jira.release})\n\n{fotingo.banner}`,
     };
-  }
+  },
 };
