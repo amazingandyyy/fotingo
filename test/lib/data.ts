@@ -51,9 +51,9 @@ export const data = {
   },
   createGitConfig(): GitConfig {
     return {
-      baseBranch: 'master',
-      branchTemplate: '{issue.key}',
-      remote: 'origin',
+      baseBranch: faker.random.arrayElement(['master', 'develop', 'h/some_hotfix']),
+      branchTemplate: `${faker.internet.url()} {issue.key}`,
+      remote: faker.random.arrayElement(['origin', 'upstream']),
     };
   },
   createJiraConfig(): JiraConfig {
