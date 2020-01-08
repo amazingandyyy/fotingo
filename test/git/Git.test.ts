@@ -12,6 +12,7 @@ const simpleGit = (simpleGitMock as unknown) as jest.Mock;
 let git: Git;
 
 describe('Git', () => {
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const mockGit = () => {
     const issue = data.createIssue();
     const gitConfig = data.createGitConfig();
@@ -23,14 +24,12 @@ describe('Git', () => {
       branchName,
       gitConfig,
       gitMocks: {
-        branch: jest
-          .fn()
-          .mockResolvedValue({
-            all: [
-              `remotes/${gitConfig.remote}/${branchName}`,
-              `remotes/${gitConfig.remote}/${gitConfig.baseBranch}`,
-            ],
-          }),
+        branch: jest.fn().mockResolvedValue({
+          all: [
+            `remotes/${gitConfig.remote}/${branchName}`,
+            `remotes/${gitConfig.remote}/${gitConfig.baseBranch}`,
+          ],
+        }),
         branchLocal: jest.fn().mockResolvedValue({ all: [] }),
         checkoutBranch: jest.fn().mockResolvedValue(undefined),
         fetch: jest.fn().mockResolvedValue(undefined),
